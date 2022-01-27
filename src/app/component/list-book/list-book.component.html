@@ -1,1 +1,16 @@
-<p>list-book works!</p>
+<h4><a routerLink="/create">Thêm sách mới</a></h4>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>STT</th>
+    <th>Tên sách</th>
+    <th>Tên tác giả</th>
+    <th colspan="2"></th>
+  </tr>
+  <tr *ngFor="let book of books; let i = index">
+    <td>{{i + 1}}</td>
+    <td><a routerLink="{{book.id}}">{{book.title}}</a></td>
+    <td>{{book.author}}</td>
+    <td><button routerLink="/books/{{book.id}}/update">Sửa</button></td>
+    <td><button routerLink="/books/{{book.id}}/delete">Xóa</button></td>
+  </tr>
+</table>

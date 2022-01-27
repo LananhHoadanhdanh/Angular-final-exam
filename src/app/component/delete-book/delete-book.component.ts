@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {Book} from "../../model/book";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookService} from "../../service/book.service";
-import {Book} from "../../model/book";
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
+  selector: 'app-delete-book',
+  templateUrl: './delete-book.component.html',
+  styleUrls: ['./delete-book.component.css']
 })
-export class BookDetailComponent implements OnInit {
+export class DeleteBookComponent implements OnInit {
+
   book?: Book;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -26,6 +27,12 @@ export class BookDetailComponent implements OnInit {
     })
   }
 
-
+  deleteBook() {
+    // @ts-ignore
+    this.bookService.deleteBook(this.book.id).subscribe(() => {
+      alert("Xóa thành công!")
+      this.router.navigate(["/books"])
+    })
+  }
 
 }
